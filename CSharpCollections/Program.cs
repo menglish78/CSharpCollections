@@ -17,18 +17,15 @@ namespace CSharpCollections
                 new Student() { Name = "Sally", GradeLevel = 2 }
             };
 
-            students.Sort();
+            SchoolRoll schoolRoll = new SchoolRoll();
+            schoolRoll.AddStudents(students);
 
-            Student newStudent = new Student() { Name = "Joe", GradeLevel = 2 };
+            schoolRoll.Students.RemoveAt(0);
+            schoolRoll.Students.Sort();
 
-            int index = students.BinarySearch(newStudent);
+            schoolRoll.Students.AddRange(students);
 
-            if(index < 0)
-            {
-                students.Insert(~index, newStudent);
-            }
-
-            foreach(Student student in students)
+            foreach(Student student in schoolRoll.Students)
             {
                 Console.WriteLine($"{student.Name} is in grade {student.GradeLevel}");
             }
